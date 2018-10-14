@@ -4,7 +4,7 @@ require('mongoose-currency').loadType(mongoose);
 var Currency = mongoose.Types.Currency;
 
 
-
+//A Schema for the database
 var screenSchema = new Schema({
     name: {
         type: String,
@@ -53,7 +53,7 @@ var screenSchema = new Schema({
             }
         }
     },
-    available:[{type:Number}]
+    available:[{type:Number}]//available seats
 }, {
     timestamps: true
 });

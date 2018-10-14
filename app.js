@@ -8,13 +8,14 @@ const mongoose = require('mongoose');
 
 const Dishes = require('./models/screen');
 
-const url = 'mongodb://localhost:27017/movieApi';
+const url = 'mongodb://localhost:27017/movieApi';//using the mongodb database named movieApi
 const connect = mongoose.connect(url);
 
 connect.then((db) => {
     console.log("Connected correctly to server");
 }, (err) => { console.log(err); });
 
+//using routers
 var indexRouter = require('./routes/index');
 var screenRouter = require('./routes/screens');
 
