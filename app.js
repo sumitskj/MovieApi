@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 const mongoose = require('mongoose');
 
-const Dishes = require('./models/dishes');
+const Dishes = require('./models/screen');
 
 const url = 'mongodb://localhost:27017/movieApi';
 const connect = mongoose.connect(url);

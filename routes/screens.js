@@ -46,16 +46,35 @@ screenRouter.route('/:screenName/reserve')
     console.log(req.body);
     var x= (req.body.seats.B);
     var query = {name : req.params.screenName};
-    
-    Screens.findOneAndUpdate(query, {
-        $pull: {screen.: x}
-    }, { safe: true, upsert: true})
+    res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+next();
+    /*Screens.findOneAndUpdate(query,  { safe: true, upsert: true})
     .then((screen) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
+    }, (err) => next(err))
+    .catch((err) => next(err));*/
+});
+
+screenRouter.route('/:screenName/seats')
+.get((req,res,next)=>{
+    if(req.query.status==='unreserved'){
+        var q = {name : req.params.screenName};
+        Screens.find(q)
+    .then((screen) => {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        console.log(screen.name);
         res.json(screen);
     }, (err) => next(err))
     .catch((err) => next(err));
+    }else{
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        console.log("iu");
+        next();
+    }
 })
 
 module.exports = screenRouter;
